@@ -1,3 +1,4 @@
+
 class Report:
     report_id: str = ""
     status: bool = False
@@ -10,3 +11,7 @@ class Report:
         self.type_report = type_report
         self.time = time
 
+    # Instance method to print all information about the report
+    def info(self):
+        print("Report ID: ", self.report_id, "\nStatus: ", self.status, "\nType of Report: ", self.type_report,
+              "\nTime: ", self.time)
