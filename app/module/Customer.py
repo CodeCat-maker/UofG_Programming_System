@@ -1,5 +1,10 @@
 import User
 class Customer(User):
-    def rent(self,vehicleID):
+    def rent(self,vehicleID)->bool:
         return True
-
+    def reback(self,vehicleID)->bool:
+        return True
+    def report(self,vehicleID)->bool:
+        return True
+    def pay(self)->bool:
+        return True

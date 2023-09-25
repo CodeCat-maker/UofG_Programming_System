@@ -5,7 +5,9 @@ class User:
     phone_number:int = ""
     status:bool = False
     role: str = ""
-
+    def __init__(self,username,password):
+        self.username = username
+        self.password = password
     def login(self)->bool:
         return True
     def logout(self)->bool:

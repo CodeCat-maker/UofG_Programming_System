@@ -18,7 +18,7 @@ class Order:
         self.status = status
 
     # Instance method to print all information about the order
-    def info(self):
+    def getOrderInfo(self):
         print("Order ID:", self.order_id, "\nUser ID:", self.user_id, "\nUsername: ", self.username, "\nPrice: ",
               self.price, "\nTime: ", self.time, "\nDestination ", self.destination, "\nStatus: ", self.status)
 
