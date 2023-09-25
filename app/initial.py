@@ -3,8 +3,6 @@ from loguru import logger
 db = sqlite3.connect("database.db")
 cursor = db.cursor()
 
-
-
 def ensure_success(func):
     def wrapper(*args, **kwargs):
         try:
@@ -38,5 +36,6 @@ def initial():
 
 if __name__ == '__main__':
     initial()
+    db.close()
 
 
