@@ -35,8 +35,59 @@ def create_user_table():
     return "User"
 
 
+@ensure_success
+def create_vehicle_table():
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS Vehicle(
+        vehicle_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        type INTEGER NOT NULL,
+        longitude INTEGER NOT NULL,
+        latitude INTEGER NOT NULL,
+        status TEXT NOT NULL,
+        battery FLOAT NOT NULL
+        );
+        """)
+    db.commit()
+    return "Vehicle"
+
+
+@ensure_success
+def create_order_table():
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS Orders(
+        order_id TEXT PRIMARY KEY ,
+        userid TEXT NOT NULL UNIQUE,
+        username TEXT NOT NULL,
+        price FLOAT NOT NULL,
+        time TIMESTAMP NOT NULL,
+        status BOOLEAN NOT NULL,
+        destination TEXT NOT NULL
+        );
+    """)
+    db.commit()
+    return "Order"
+
+
+@ensure_success
+def create_report_table():
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS Report(
+        report_id TEXT PRIMARY KEY ,
+        type INTEGER NOT NULL,
+        time TIMESTAMP NOT NULL,
+        status BOOLEAN NOT NULL
+        );
+    """)
+    db.commit()
+    return "Report"
+
+
 def initial():
     create_user_table()
+    create_vehicle_table()
+    create_order_table()
+    create_report_table()
+
 
 if __name__ == '__main__':
     initial()
