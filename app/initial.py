@@ -35,6 +35,7 @@ def create_user_table():
     return "User"
 
 
+@ensure_success
 def create_vehicle_table():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Vehicle(
@@ -47,7 +48,10 @@ def create_vehicle_table():
         );
         """)
     db.commit()
+    return "Vehicle"
 
+
+@ensure_success
 def create_order_table():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Orders(
@@ -61,7 +65,10 @@ def create_order_table():
         );
     """)
     db.commit()
+    return "Order"
 
+
+@ensure_success
 def create_report_table():
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS Report(
@@ -72,6 +79,7 @@ def create_report_table():
         );
     """)
     db.commit()
+    return "Report"
 
 
 def initial():
