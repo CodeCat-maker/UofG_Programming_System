@@ -9,12 +9,12 @@ with sqlite3.connect("database.db") as db:
 def ensure_success(func):
     def wrapper(*args, **kwargs):
         try:
-            func(*args, **kwargs)
-            logger.success("users table has created successfully")
+            name = func(*args, **kwargs)
+            logger.success(f"{name} has created successfully")
             return True
         except Exception as e:
             if "already exists" in str(e):
-                logger.error("Table already exists")
+                logger.error(f"{name}Table already exists")
             else:
                 logger.error(f"An error occurred:{e}")
     return wrapper
@@ -32,6 +32,7 @@ def create_user_table():
         role TEXT
     );
         """)
+    return "User"
 
 
 def create_vehicle_table():
