@@ -47,7 +47,7 @@ def create_vehicle_table():
         battery FLOAT NOT NULL
         );
         """)
-    db.commit()
+
     return "Vehicle"
 
 
@@ -64,7 +64,7 @@ def create_order_table():
         destination TEXT NOT NULL
         );
     """)
-    db.commit()
+
     return "Order"
 
 
@@ -92,5 +92,3 @@ def initial():
 if __name__ == '__main__':
     initial()
     db.close()
-
-
