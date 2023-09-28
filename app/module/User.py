@@ -1,5 +1,9 @@
 from ..utils.sqlUtil import LiteDb
 from loguru import logger
+import os
+PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
+dbName = os.path.join(PROJECT_ROOT,"../database.db")
+
 class User:
     username: str = ""
     password: str = ""
@@ -12,8 +16,9 @@ class User:
         self.password = password
     def login(self)->bool:
         db=LiteDb()
-        db.openDb('/Users/wangzepeng/Desktop/重要文件/格拉/code/Programming/&System/TeamProject/app/database.db')
-        result = db.executeSql(f'select * from users where username = "{self.username}"')[1]
+        print(dbName)
+        db.openDb(dbName)
+        result = db.executeSql(f'select * from Users where username = "{self.username}"')[1]
         if result:
             logger.debug(result)
             tmpPassWord = result[0][2]
